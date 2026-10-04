@@ -9,7 +9,7 @@ interface ImageProps {
   height?: number;
   alt?: string;
   className?: string;
-  tr?: boolean;
+  fill?: boolean;
 }
 
 export default function Image({
@@ -18,24 +18,15 @@ export default function Image({
   height,
   alt = "",
   className,
-  tr = false,
+  fill = false,
 }: ImageProps) {
   return (
     <NextImage
       src={src}
       alt={alt}
       className={className}
-      {...(tr
-        ? {
-            width,
-            height,
-          }
-        : {
-            width,
-            height,
-          })}
+      {...(fill ? { fill: true } : { width, height })}
     />
   );
 }
-
 
